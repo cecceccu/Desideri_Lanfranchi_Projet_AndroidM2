@@ -86,6 +86,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <TextView
+        android:id="@+id/textview_from_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="21/01/22"
@@ -96,6 +97,7 @@
 
 
     <TextView
+        android:id="@+id/textview_to_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="22/01/22"
