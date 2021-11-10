@@ -1,21 +1,34 @@
 package com.example.desideri_lanfranchi_projet_androidm2
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class MainViewModel: ViewModel() {
+    private var airportList: List<Airport> = Utils.generateAirportList()
     private val airportListLiveData = MutableLiveData<List<String>>()
 
     private val fromCalendarLiveData = MutableLiveData<Calendar>()
     private val toCalendarLiveData = MutableLiveData<Calendar>()
 
+
+    fun getAirportList(): List<Airport>
+    {
+        return airportList
+    }
     fun getAirportNamesListLivedata(): LiveData<List<String>>
     {
         return airportListLiveData
     }
+
 
     fun getFromCalendarLiveData(): LiveData<Calendar>
     {
@@ -29,7 +42,6 @@ class MainViewModel: ViewModel() {
 
     init
     {
-        val airportList = Utils.generateAirportList()
         val airportNamesList = ArrayList<String>()
         for (airport in airportList)
         {
@@ -56,7 +68,23 @@ class MainViewModel: ViewModel() {
     fun doSearch(airportSelectedIndex: Int, isArrival: Boolean)
     {
         //Créer l'URL
+        var url = if (isArrival) "https://opensky-network.org/api/flights/arrival" else "https://opensky-network.org/api/flights/departure"
+
+        val airportIcao = airportList[airportSelectedIndex].icao
+
+        val begin = fromCalendarLiveData.value!!.timeInMillis/1000
+        val end = toCalendarLiveData.value!!.timeInMillis/1000
+
+        url += "?airport=${airportIcao}&begin=${begin}&end=${end}"
+
+        Log.i("URL", url)
         //Faire la requête
+
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                RequestManager.getSuspended(url, HashMap())
+            }
+        }
         //Stocker le résultat dans un singleton
     }
 }
