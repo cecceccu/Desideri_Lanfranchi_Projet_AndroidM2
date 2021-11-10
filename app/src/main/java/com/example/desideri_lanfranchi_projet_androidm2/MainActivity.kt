@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -64,7 +65,16 @@ class MainActivity : AppCompatActivity() {
             viewModel.doSearch(airportSelectedIndex, isArrival)
         }
 
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         viewModel.getRequestStatusLiveData().observe(this, Observer{
+            if(it==1) //pending
+            {
+                progressBar.visibility = View.VISIBLE
+            }
+            else
+            {
+                progressBar.visibility = View.INVISIBLE
+            }
             if(it==400){
                 Toast.makeText(this, "An error has occurred", Toast.LENGTH_SHORT).show()
             }

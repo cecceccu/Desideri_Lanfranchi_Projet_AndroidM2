@@ -87,6 +87,7 @@ class MainViewModel: ViewModel() {
         Log.i("URL", url)
 
         viewModelScope.launch {
+            requestStatusLiveData.value = 1 // 1 means pending
             withContext(Dispatchers.IO){
                 val result = RequestManager.getSuspended(url, HashMap())
             //CACA : requestStatusLiveData to trigger navigation is limit limit
