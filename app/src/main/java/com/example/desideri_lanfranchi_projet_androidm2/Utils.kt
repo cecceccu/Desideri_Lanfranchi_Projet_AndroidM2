@@ -193,5 +193,17 @@ class Utils private constructor() {
                 } else duration.append(minute).append("min").toString()
             }
         }
+
+        fun convertFlightDataIntoList(data: String): List<FlightModel>{
+            val parser = JsonParser()
+            val jsonElement = parser.parse(data)
+            val jsonArray = jsonElement.asJsonArray
+            val flightsList = ArrayList<FlightModel>()
+            for (flight in jsonArray)
+            {
+                flightsList.add(Gson().fromJson(flight.asJsonObject, FlightModel::class.java))
+            }
+            return flightsList
+        }
     }
 }

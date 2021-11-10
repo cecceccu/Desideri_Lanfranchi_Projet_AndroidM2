@@ -1,6 +1,7 @@
 package com.example.desideri_lanfranchi_projet_androidm2
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,9 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getFromCalendarLiveData().observe(this, Observer {
             fromDateTextView.text = Utils.dateToString(it.time)
+
             if (it.time>viewModel.getToCalendarLiveData().value!!.time)
+            {
                 findViewById<TextView>(R.id.textview_to_date).text = Utils.dateToString(it.time)
                 viewModel.getToCalendarLiveData().value!!.time = it.time
+            }
+
         })
 
         viewModel.getToCalendarLiveData().observe(this, Observer {
@@ -59,9 +64,20 @@ class MainActivity : AppCompatActivity() {
             viewModel.doSearch(airportSelectedIndex, isArrival)
         }
 
+        viewModel.getRequestStatusLiveData().observe(this, Observer{
+            if(it==400){
+                Toast.makeText(this, "An error has occurred", Toast.LENGTH_SHORT).show()
+            }
+            else if(it==200)
+            {
+                startActivity(Intent(this, FlightListActivity::class.java))
+            }
+        })
+
     }
 
-    private fun showDatePicker(clickedViewId: Int) {
+    private fun showDatePicker(clickedViewId: Int)
+    {
         val calendar: Calendar =
             if (clickedViewId == R.id.textview_from_date) viewModel.getFromCalendarLiveData().value!! else viewModel.getToCalendarLiveData().value!!
         val datePickerDialog = DatePickerDialog(
@@ -78,9 +94,10 @@ class MainActivity : AppCompatActivity() {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
-        datePickerDialog.datePicker.minDate = Calendar.getInstance().timeInMillis
+        datePickerDialog.datePicker.maxDate = Calendar.getInstance().timeInMillis
         if (clickedViewId == R.id.textview_to_date)
             datePickerDialog.datePicker.minDate = viewModel.getFromCalendarLiveData().value!!.timeInMillis
         datePickerDialog.show()
     }
+
 }

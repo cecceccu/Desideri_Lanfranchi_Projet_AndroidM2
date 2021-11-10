@@ -19,6 +19,8 @@ class MainViewModel: ViewModel() {
     private val fromCalendarLiveData = MutableLiveData<Calendar>()
     private val toCalendarLiveData = MutableLiveData<Calendar>()
 
+    private val requestStatusLiveData = MutableLiveData<Int>()
+
 
     fun getAirportList(): List<Airport>
     {
@@ -40,6 +42,11 @@ class MainViewModel: ViewModel() {
         return toCalendarLiveData
     }
 
+    fun getRequestStatusLiveData(): MutableLiveData<Int>
+    {
+        return requestStatusLiveData
+    }
+
     init
     {
         val airportNamesList = ArrayList<String>()
@@ -51,6 +58,7 @@ class MainViewModel: ViewModel() {
 
         fromCalendarLiveData.value = Calendar.getInstance()
         toCalendarLiveData.value = Calendar.getInstance()
+        requestStatusLiveData.value = 0
     }
 
     fun updateCalendar(year: Int, month: Int, day: Int, isFromCalendar: Boolean)
@@ -67,7 +75,6 @@ class MainViewModel: ViewModel() {
 
     fun doSearch(airportSelectedIndex: Int, isArrival: Boolean)
     {
-        //Créer l'URL
         var url = if (isArrival) "https://opensky-network.org/api/flights/arrival" else "https://opensky-network.org/api/flights/departure"
 
         val airportIcao = airportList[airportSelectedIndex].icao
@@ -78,13 +85,24 @@ class MainViewModel: ViewModel() {
         url += "?airport=${airportIcao}&begin=${begin}&end=${end}"
 
         Log.i("URL", url)
-        //Faire la requête
 
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO){
-                RequestManager.getSuspended(url, HashMap())
+            withContext(Dispatchers.IO){
+                val result = RequestManager.getSuspended(url, HashMap())
+            //CACA : requestStatusLiveData to trigger navigation is limit limit
+                if (result != null){
+                    Log.i("RESULT", result)
+                    val flightsList = Utils.convertFlightDataIntoList(result)
+                    DataHolder.flightsList = flightsList
+                    requestStatusLiveData.postValue(200)
+                }
+                else
+                {
+                    requestStatusLiveData.postValue(400)
+                }
             }
         }
-        //Stocker le résultat dans un singleton
+
+
     }
 }
