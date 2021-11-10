@@ -3,9 +3,7 @@ package com.example.desideri_lanfranchi_projet_androidm2
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import java.util.*
@@ -17,9 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val airportSpinner = findViewById<Spinner>(R.id.airport_spinner)
+
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.getAirportListNamesLivedata().observe(this, Observer {
+        viewModel.getAirportNamesListLivedata().observe(this, Observer {
             val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             this, android.R.layout.simple_spinner_item,
            it
@@ -36,14 +36,43 @@ class MainActivity : AppCompatActivity() {
             fromDateTextView.text = Utils.dateToString(it.time)
         })
 
-        fromDateTextView.setOnClickListener{
-            DatePickerDialog(this,
-                DatePickerDialog.OnDateSetListener {view, year, monthOfYear, dayOfMonth ->
-                viewModel.updateFromCalendar(year, monthOfYear, dayOfMonth)
-                }, viewModel.getFromCalendarLiveData().value!!.get(Calendar.YEAR),
-                         viewModel.getFromCalendarLiveData().value!!.get(Calendar.MONTH),
-                         viewModel.getFromCalendarLiveData().value!!.get(Calendar.DAY_OF_MONTH)).show()
+        viewModel.getToCalendarLiveData().observe(this, Observer {
+            toDateTextView.text = Utils.dateToString(it.time)
+        })
+
+        fromDateTextView.setOnClickListener {
+            showDatePicker(it.id)
         }
 
+        toDateTextView.setOnClickListener {
+            showDatePicker(it.id)
+        }
+
+        findViewById<Button>(R.id.search_flights).setOnClickListener{
+            val airportSelectedIndex = airportSpinner.selectedItemPosition
+
+            val isArrival = findViewById<Switch>(R.id.departure_arrival_switch)
+            viewModel.doSearch()
+        }
+
+    }
+
+    private fun showDatePicker(clickedViewId: Int) {
+        val calendar: Calendar =
+            if (clickedViewId == R.id.textview_from_date) viewModel.getFromCalendarLiveData().value!! else viewModel.getToCalendarLiveData().value!!
+        DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                viewModel.updateCalendar(
+                    year,
+                    monthOfYear,
+                    dayOfMonth,
+                    clickedViewId == R.id.textview_from_date
+                )
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ).show()
     }
 }

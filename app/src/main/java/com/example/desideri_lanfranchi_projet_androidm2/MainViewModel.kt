@@ -10,8 +10,9 @@ class MainViewModel: ViewModel() {
     private val airportListLiveData = MutableLiveData<List<String>>()
 
     private val fromCalendarLiveData = MutableLiveData<Calendar>()
+    private val toCalendarLiveData = MutableLiveData<Calendar>()
 
-    fun getAirportListNamesLivedata(): LiveData<List<String>>
+    fun getAirportNamesListLivedata(): LiveData<List<String>>
     {
         return airportListLiveData
     }
@@ -19,6 +20,11 @@ class MainViewModel: ViewModel() {
     fun getFromCalendarLiveData(): LiveData<Calendar>
     {
         return fromCalendarLiveData
+    }
+
+    fun getToCalendarLiveData(): LiveData<Calendar>
+    {
+        return toCalendarLiveData
     }
 
     init
@@ -32,14 +38,25 @@ class MainViewModel: ViewModel() {
         airportListLiveData.value = airportNamesList
 
         fromCalendarLiveData.value = Calendar.getInstance()
+        toCalendarLiveData.value = Calendar.getInstance()
     }
 
-    fun updateFromCalendar(year: Int, month: Int, day: Int)
+    fun updateCalendar(year: Int, month: Int, day: Int, isFromCalendar: Boolean)
     {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.YEAR, year)
         calendar.set(Calendar.MONTH, month)
         calendar.set(Calendar.DAY_OF_MONTH, day)
-        fromCalendarLiveData.value = calendar
+        if (isFromCalendar)
+            fromCalendarLiveData.value = calendar
+        else
+            toCalendarLiveData.value = calendar
+    }
+
+    fun doSearch(airportSelectedIndex: Int, isArrival: Boolean)
+    {
+        //Créer l'URL
+        //Faire la requête
+        //Stocker le résultat dans un singleton
     }
 }
