@@ -1,4 +1,4 @@
-package com.example.desideri_lanfranchi_projet_androidm2
+package com.example.desideri_lanfranchi_projet_androidm2.services
 
 import android.app.Application
 import android.content.Context

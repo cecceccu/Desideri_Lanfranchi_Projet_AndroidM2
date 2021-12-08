@@ -1,14 +1,17 @@
-package com.example.desideri_lanfranchi_projet_androidm2
+package com.example.desideri_lanfranchi_projet_androidm2.view
 
 import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.desideri_lanfranchi_projet_androidm2.R
+import com.example.desideri_lanfranchi_projet_androidm2.services.Utils
+import com.example.desideri_lanfranchi_projet_androidm2.view.FlightListActivity
+import com.example.desideri_lanfranchi_projet_androidm2.viewModel.MainViewModel
 import java.util.*
 
 lateinit var  viewModel: MainViewModel

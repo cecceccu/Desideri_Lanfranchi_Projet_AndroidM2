@@ -1,4 +1,4 @@
-package com.example.desideri_lanfranchi_projet_androidm2
+package com.example.desideri_lanfranchi_projet_androidm2.model
 
 /**
  * Created by sergio on 07/11/2021

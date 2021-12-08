@@ -1,7 +1,9 @@
-package com.example.desideri_lanfranchi_projet_androidm2
+package com.example.desideri_lanfranchi_projet_androidm2.services
 
 import android.content.Context
 import android.util.Log
+import com.example.desideri_lanfranchi_projet_androidm2.model.Airport
+import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
