@@ -51,6 +51,12 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getToCalendarLiveData().observe(this, Observer {
             toDateTextView.text = Utils.dateToString(it.time)
+
+            if (it.time<viewModel.getFromCalendarLiveData().value!!.time)
+            {
+                findViewById<TextView>(R.id.textview_from_date).text = Utils.dateToString(it.time)
+                viewModel.getFromCalendarLiveData().value!!.time = it.time
+            }
         })
 
         fromDateTextView.setOnClickListener {
