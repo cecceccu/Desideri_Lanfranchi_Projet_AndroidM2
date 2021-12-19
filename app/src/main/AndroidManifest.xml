@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.desideri_lanfranchi_projet_androidm2">
 
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyClPaNQcFNXC0jkqBiy3OO0CmnZBTSWczo" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application

@@ -18,6 +18,7 @@ lateinit var  viewModel: MainViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.getFromCalendarLiveData().value!!.time = it.time
             }
         })
+
 
         fromDateTextView.setOnClickListener {
             showDatePicker(it.id)

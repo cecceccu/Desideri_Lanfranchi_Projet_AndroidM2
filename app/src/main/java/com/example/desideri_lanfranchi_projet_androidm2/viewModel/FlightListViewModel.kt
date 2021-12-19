@@ -9,7 +9,6 @@ import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
 class FlightListViewModel: ViewModel() {
 
     private val flightListLiveData = MutableLiveData<List<FlightModel>>()
-
     fun getFlightListLiveData(): LiveData<List<FlightModel>>
     {
         return flightListLiveData
