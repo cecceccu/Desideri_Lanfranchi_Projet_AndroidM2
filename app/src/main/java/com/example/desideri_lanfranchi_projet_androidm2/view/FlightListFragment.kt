@@ -3,7 +3,6 @@ package com.example.desideri_lanfranchi_projet_androidm2.view
 import FlightsRecyclerAdapter
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desideri_lanfranchi_projet_androidm2.R
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
+import com.example.desideri_lanfranchi_projet_androidm2.viewModel.FlightListFragmentViewModel
 import com.example.desideri_lanfranchi_projet_androidm2.viewModel.SharedFlightViewModel
 
 class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListener {
