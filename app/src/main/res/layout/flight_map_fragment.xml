@@ -3,14 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FlightMapFragment"
-    android:background="#0000FF">
+    tools:context=".view.FlightMapFragment">
 
-    <TextView
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello"
-        android:textSize="30sp"
-        android:id="@+id/textview_callsign"/>
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

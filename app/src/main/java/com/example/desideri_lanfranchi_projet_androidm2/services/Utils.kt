@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.example.desideri_lanfranchi_projet_androidm2.model.Airport
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
+import com.example.desideri_lanfranchi_projet_androidm2.model.Track
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
@@ -206,6 +207,14 @@ class Utils private constructor() {
                 flightsList.add(Gson().fromJson(flight.asJsonObject, FlightModel::class.java))
             }
             return flightsList
+        }
+
+        fun convertTrackDataIntoObject(data: String): Track {
+            val parser = JsonParser()
+            var jsonElement = parser.parse(data)
+            val jsonObject = jsonElement.asJsonObject
+            return Gson().fromJson(jsonObject, Track::class.java)
+
         }
     }
 }

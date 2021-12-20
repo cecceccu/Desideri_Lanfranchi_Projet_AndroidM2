@@ -1,14 +1,18 @@
 package com.example.desideri_lanfranchi_projet_androidm2.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.desideri_lanfranchi_projet_androidm2.model.DataHolder
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
+import com.example.desideri_lanfranchi_projet_androidm2.services.RequestManager
+import com.example.desideri_lanfranchi_projet_androidm2.services.Utils
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-/**
- * Created by sergio on 11/10/21
- * All rights reserved GoodBarber
- */
 class SharedFlightViewModel : ViewModel() {
     private val selectedFlightLiveData = MutableLiveData<FlightModel>()
 
@@ -16,7 +20,12 @@ class SharedFlightViewModel : ViewModel() {
         return selectedFlightLiveData
     }
 
+
+
     fun updateSelectedFlight(flight: FlightModel) {
         selectedFlightLiveData.value = flight
+        DataHolder.selectedFlight = flight
     }
+
+
 }

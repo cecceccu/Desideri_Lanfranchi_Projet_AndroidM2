@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.desideri_lanfranchi_projet_androidm2">
 
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyClPaNQcFNXC0jkqBiy3OO0CmnZBTSWczo" />
+
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,6 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Desideri_Lanfranchi_Projet_AndroidM2">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyClPaNQcFNXC0jkqBiy3OO0CmnZBTSWczo" />
+
         <activity
             android:name=".view.FlightListActivity"
             android:exported="false" />
