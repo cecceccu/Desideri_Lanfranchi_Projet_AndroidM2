@@ -37,7 +37,7 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
     ): View? {
         val v = inflater.inflate(R.layout.flight_list_fragment, container, false)
 
-        button = v.findViewById<Button>(R.id.flight_list_frag_new_search_button)
+        button = v.findViewById<Button>(R.id.flight_list_frag_show_button)
 
         return v
     }

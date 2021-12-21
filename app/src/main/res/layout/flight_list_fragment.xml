@@ -10,19 +10,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.FlightListFragment"
-    android:paddingEnd="20dp"
-    android:paddingStart="20dp"
+    android:padding="20dp"
     android:clipToPadding="false"
     android:background="#e0e0e0">
 
-
-    <include
-        android:id="@+id/header2"
-        layout="@layout/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="-20dp"
-        android:layout_marginStart="-20dp"/>
 
 
 
@@ -34,7 +25,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="@id/recyclerView_container"
-        app:layout_constraintTop_toBottomOf="@id/header2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_container"
@@ -43,13 +34,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/flight_list_frag_flightList"
-        app:layout_constraintBottom_toTopOf="@id/flight_list_frag_new_search_button"/>
+        app:layout_constraintBottom_toTopOf="@id/flight_list_frag_show_button"/>
 
     <Button
-        android:id="@+id/flight_list_frag_new_search_button"
+        android:id="@+id/flight_list_frag_show_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newSearch"
+        android:text="@string/show"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@id/recyclerView_container"
         app:layout_constraintTop_toBottomOf="@id/recyclerView_container"

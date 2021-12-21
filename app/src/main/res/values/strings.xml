@@ -9,5 +9,5 @@
     <string name="arrival">"Arrival : "</string>
     <string name="flightTime">"Flight time : "</string>
     <string name="flightList">"Flights List : "</string>
-    <string name="newSearch">New Search</string>
+    <string name="show">Show track</string>
 </resources>
