@@ -17,134 +17,16 @@
         android:background="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <Spinner
-        android:id="@+id/airport_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/departure_arrival_switch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:minWidth="200dp"
-        android:maxWidth="250dp"
-        android:gravity="center"/>
-
-    <Switch
-        android:id="@+id/departure_arrival_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="16dp"
-        />
-
-    <TextView
-        android:id="@+id/departure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Departure"
-        app:layout_constraintBottom_toBottomOf="@+id/departure_arrival_switch"
-        app:layout_constraintEnd_toStartOf="@+id/departure_arrival_switch"
-        app:layout_constraintTop_toTopOf="@+id/departure_arrival_switch" />
-
-    <TextView
-        android:id="@+id/arrival"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Arrival"
-        app:layout_constraintBottom_toBottomOf="@+id/departure_arrival_switch"
-        app:layout_constraintStart_toEndOf="@+id/departure_arrival_switch"
-        app:layout_constraintTop_toTopOf="@+id/departure_arrival_switch"
-        android:layout_marginStart="16dp"
-        />
-
-    <TextView
-        android:id="@+id/from"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="From"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <TextView
-        android:id="@+id/to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="To"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <TextView
-        android:id="@+id/textview_from_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="21/01/22"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/from"
-        app:layout_constraintStart_toStartOf="@+id/from"
-        app:layout_constraintTop_toBottomOf="@+id/from" />
-
-
-    <TextView
-        android:id="@+id/textview_to_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="22/01/22"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/to"
-        app:layout_constraintStart_toStartOf="@+id/to"
-        app:layout_constraintTop_toBottomOf="@+id/to" />
-
-    <Button
-        android:id="@+id/search_flights"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_activity_fragmentContainerView"
+        android:name="com.example.desideri_lanfranchi_projet_androidm2.view.SearchFragment"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Search"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"
-        />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/search_flights"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="60dp"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toBottomOf="@id/flight_app_header"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
