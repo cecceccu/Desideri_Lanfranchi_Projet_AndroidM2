@@ -1,6 +1,7 @@
 package com.example.desideri_lanfranchi_projet_androidm2.view
 
 import FlightsRecyclerAdapter
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +31,7 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
     private lateinit var selectedFlight: FlightModel
 
     private lateinit var button: Button
+    private lateinit var backButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +40,7 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
         val v = inflater.inflate(R.layout.flight_list_fragment, container, false)
 
         button = v.findViewById<Button>(R.id.flight_list_frag_show_button)
+        backButton = v.findViewById<Button>(R.id.flight_list_frag_back_button)
 
         return v
     }
@@ -67,6 +70,10 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
             {
                 sharedViewModel.updateSelectedFlight(viewModel.getSelectedFlightLiveData().value!!)
             }
+        }
+
+        backButton.setOnClickListener {
+            startActivity(Intent(activity, MainActivity::class.java))
         }
 
 

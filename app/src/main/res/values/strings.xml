@@ -10,4 +10,5 @@
     <string name="flightTime">"Flight time : "</string>
     <string name="flightList">"Flights List : "</string>
     <string name="show">Show track</string>
+    <string name="new_search">Back to search</string>
 </resources>
