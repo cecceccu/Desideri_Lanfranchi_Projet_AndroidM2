@@ -97,6 +97,7 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
     private fun drawPath(googleMap: GoogleMap) {
 
 
+            googleMap.clear()
             val polylineOptions = PolylineOptions()
             for (point in viewModel.getFlightTrackLiveData().value!!.path)
             {

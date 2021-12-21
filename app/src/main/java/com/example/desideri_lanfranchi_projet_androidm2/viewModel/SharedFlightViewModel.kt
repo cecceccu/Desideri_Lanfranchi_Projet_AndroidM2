@@ -23,8 +23,9 @@ class SharedFlightViewModel : ViewModel() {
 
 
     fun updateSelectedFlight(flight: FlightModel) {
-        selectedFlightLiveData.value = flight
         DataHolder.selectedFlight = flight
+        selectedFlightLiveData.value = flight
+
     }
 
 

@@ -36,7 +36,6 @@ class FlightMapViewModel : ViewModel() {
     {
         var selectedFlight = DataHolder.selectedFlight
         var url = "https://opensky-network.org/api/tracks/all"
-
         val icao24 = selectedFlight!!.icao24
 
         val lastSeen = selectedFlight!!.lastSeen
@@ -55,7 +54,6 @@ class FlightMapViewModel : ViewModel() {
                     DataHolder.track = track
                     flightTrackLiveData.postValue(track)
                     requestStatusLiveData.postValue(200)
-                    Log.i("bbbbbbbbbbbbbbbbb", "bbbbbbbbbbbbb")
 
                 }
                 else
