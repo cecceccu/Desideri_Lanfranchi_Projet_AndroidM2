@@ -36,7 +36,7 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
         viewModel = ViewModelProvider(this).get(FlightListFragmentViewModel::class.java)
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedFlightViewModel::class.java)
         viewModel.getFlightListLiveData().observe(viewLifecycleOwner, Observer {
-            val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
+            val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView_container)
             val adapter = FlightsRecyclerAdapter(it, this)
             recyclerView?.adapter = adapter
             recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
