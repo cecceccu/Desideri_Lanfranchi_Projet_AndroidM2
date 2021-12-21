@@ -11,4 +11,6 @@
     <string name="flightList">"Flights List : "</string>
     <string name="show">Show track</string>
     <string name="new_search">Back to search</string>
+    <string name="back_to_list">Back to list</string>
+    <string name="detail">Show detail</string>
 </resources>

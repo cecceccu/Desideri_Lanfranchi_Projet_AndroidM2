@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -38,6 +39,8 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var viewModel: FlightMapViewModel
     private lateinit var sharedViewModel: SharedFlightViewModel
     private lateinit var progressBar: ProgressBar
+    private lateinit var back_button: Button
+    private lateinit var detail_button: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +52,8 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
         progressBar = v.findViewById<ProgressBar>(R.id.progressBar2)
+        back_button = v.findViewById<Button>(R.id.back_to_list_button)
+        detail_button = v.findViewById<Button>(R.id.show_detail_button)
 
         return v
     }
@@ -56,6 +61,18 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
+        val isTablet:Boolean = activity?.findViewById<View>(R.id.fragment_map_container) != null
+        Log.i("Tablette", "isTablet $isTablet")
+
+        if (!isTablet)
+        {
+            back_button.visibility = Button.VISIBLE
+
+            back_button.setOnClickListener {
+                fragmentManager?.popBackStackImmediate()
+            }
+        }
 
         viewModel = ViewModelProvider(this).get(FlightMapViewModel::class.java)
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedFlightViewModel::class.java)
