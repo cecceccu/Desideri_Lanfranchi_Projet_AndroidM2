@@ -6,136 +6,85 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/flightcell_frag_from"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/from"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/flightcell_frag_to"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/flightcell_frag_departure_airport"/>
-
-    <TextView
-        android:id="@+id/flightcell_frag_departure_airport"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_from"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_from"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_from"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-        android:id="@+id/flightcell_frag_to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/to"
-        app:layout_constraintStart_toEndOf="@id/flightcell_frag_from"
-        app:layout_constraintEnd_toStartOf="@id/flightcell_frag_flight"
-        app:layout_constraintTop_toTopOf="@id/flightcell_frag_from"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_from"/>
-
-    <TextView
-        android:id="@+id/flightcell_frag_arrival_airport"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_to"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_to"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_to"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_departure_airport"/>
 
     <TextView
         android:id="@+id/flightcell_frag_flight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/flight"
-        app:layout_constraintStart_toEndOf="@id/flightcell_frag_to"
-        app:layout_constraintEnd_toStartOf="@id/flightcell_frag_departure"
-        app:layout_constraintTop_toTopOf="@id/flightcell_frag_to"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_to"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/flightcell_frag_flight_name"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_flight"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_flight"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_flight"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_arrival_airport"/>
+        android:id="@+id/flightcell_frag_flight_callsign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/flightcell_frag_flight" />
+
+    <TextView
+        android:id="@+id/flightcell_frag_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/from"
+        android:layout_marginStart="14dp"
+        app:layout_constraintStart_toEndOf="@id/flightcell_frag_flight_callsign"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/flightcell_frag_departure_airport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/flightcell_frag_from"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/flightcell_frag_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:text="@string/to"
+        app:layout_constraintStart_toEndOf="@id/flightcell_frag_departure_airport"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/flightcell_frag_arrival_airport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/flightcell_frag_to"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
 
     <TextView
         android:id="@+id/flightcell_frag_departure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/departure"
-        app:layout_constraintStart_toEndOf="@id/flightcell_frag_flight"
-        app:layout_constraintEnd_toStartOf="@id/flightcell_frag_arrival"
-        app:layout_constraintTop_toTopOf="@id/flightcell_frag_flight"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_flight"/>
-
-    <TextView
-        android:id="@+id/flightcell_frag_departure_hour"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_departure"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_departure"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_departure"
-        app:layout_constraintBottom_toTopOf="@id/flightcell_frag_departure_date"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_flight"/>
 
     <TextView
         android:id="@+id/flightcell_frag_departure_date"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_departure_hour"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_departure_hour"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_departure_hour"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_flight_name"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/flightcell_frag_departure"
+        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_flight" />
 
     <TextView
         android:id="@+id/flightcell_frag_arrival"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/arrival"
-        app:layout_constraintStart_toEndOf="@id/flightcell_frag_departure"
-        app:layout_constraintEnd_toStartOf="@id/flightcell_frag_flight_time"
-        app:layout_constraintTop_toTopOf="@id/flightcell_frag_departure"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_departure"/>
-
-    <TextView
-        android:id="@+id/flightcell_frag_arrival_hour"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_arrival"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_arrival"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_arrival"
-        app:layout_constraintBottom_toTopOf="@id/flightcell_frag_arrival_date"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_departure"/>
 
     <TextView
         android:id="@+id/flightcell_frag_arrival_date"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_arrival_hour"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_arrival_hour"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_arrival_hour"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_departure_date"/>
-
-    <TextView
-        android:id="@+id/flightcell_frag_flight_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/flightTime"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_arrival"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/flightcell_frag_arrival"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_arrival"/>
+        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_departure" />
 
-    <TextView
-        android:id="@+id/flightcell_frag_time"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/flightcell_frag_flight_time"
-        app:layout_constraintEnd_toEndOf="@id/flightcell_frag_flight_time"
-        app:layout_constraintTop_toBottomOf="@id/flightcell_frag_flight_time"
-        app:layout_constraintBottom_toBottomOf="@id/flightcell_frag_arrival_date"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

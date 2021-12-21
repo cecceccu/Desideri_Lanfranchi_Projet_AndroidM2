@@ -3,11 +3,15 @@ package com.example.desideri_lanfranchi_projet_androidm2.view
 import FlightsRecyclerAdapter
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desideri_lanfranchi_projet_androidm2.R
@@ -23,12 +27,19 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
 
     private lateinit var viewModel: FlightListFragmentViewModel
     private lateinit var sharedViewModel: SharedFlightViewModel
+    private lateinit var selectedFlight: FlightModel
+
+    private lateinit var button: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.flight_list_fragment, container, false)
+        val v = inflater.inflate(R.layout.flight_list_fragment, container, false)
+
+        button = v.findViewById<Button>(R.id.flight_list_frag_new_search_button)
+
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -38,13 +49,31 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
         viewModel.getFlightListLiveData().observe(viewLifecycleOwner, Observer {
             val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView_container)
             val adapter = FlightsRecyclerAdapter(it, this)
+            val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             recyclerView?.adapter = adapter
-            recyclerView?.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            recyclerView?.layoutManager = layoutManager
+            val dividerItemDecoration = DividerItemDecoration(recyclerView?.context,
+                layoutManager.orientation);
+            recyclerView?.addItemDecoration(dividerItemDecoration)
         })
+
+        button.setOnClickListener{
+
+            if (viewModel.getSelectedFlightLiveData().value == null)
+            {
+                Toast.makeText(activity, "Please select a flight first", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                sharedViewModel.updateSelectedFlight(viewModel.getSelectedFlightLiveData().value!!)
+            }
+        }
+
+
     }
 
     override fun onItemClicked(selectedFlight: FlightModel) {
-        sharedViewModel.updateSelectedFlight(selectedFlight)
+        viewModel.updateSelectedFlight(selectedFlight)
     }
 
 }

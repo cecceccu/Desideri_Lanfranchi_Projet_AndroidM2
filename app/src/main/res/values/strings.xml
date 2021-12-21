@@ -2,12 +2,12 @@
     <string name="app_name">Desideri_Lanfranchi_Projet_AndroidM2</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="from">From : </string>
+    <string name="from">"From : "</string>
     <string name="to">"To : "</string>
     <string name="flight">"Flight : "</string>
     <string name="departure">"Departure : "</string>
     <string name="arrival">"Arrival : "</string>
     <string name="flightTime">"Flight time : "</string>
-    <string name="flightList">"Flight List : "</string>
+    <string name="flightList">"Flights List : "</string>
     <string name="newSearch">New Search</string>
 </resources>
