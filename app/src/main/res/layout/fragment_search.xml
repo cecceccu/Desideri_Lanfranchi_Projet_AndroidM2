@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".view.SearchFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -49,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
         android:text="@string/departure"
         app:layout_constraintBottom_toBottomOf="@+id/search_frag_departure_arrival_switch"
         app:layout_constraintEnd_toStartOf="@+id/search_frag_departure_arrival_switch"
@@ -59,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/arrival"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/search_frag_departure_arrival_switch"
         app:layout_constraintStart_toEndOf="@+id/search_frag_departure_arrival_switch"
         app:layout_constraintTop_toTopOf="@+id/search_frag_departure_arrival_switch"
@@ -70,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/from"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/search_frag_vertical_guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/search_frag_horizontal_guideline" />
@@ -80,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/to"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_frag_vertical_guideline"
         app:layout_constraintTop_toTopOf="@+id/search_frag_horizontal_guideline" />
@@ -88,6 +93,7 @@
         android:id="@+id/search_frag_textview_from_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/search_frag_from"
         app:layout_constraintStart_toStartOf="@+id/search_frag_from"
@@ -98,6 +104,7 @@
         android:id="@+id/search_frag_textview_to_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/search_frag_to"
         app:layout_constraintStart_toStartOf="@+id/search_frag_to"
@@ -110,6 +117,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="@color/primary_light"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

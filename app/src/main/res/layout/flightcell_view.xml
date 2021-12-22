@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="5dp"
+    android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/flight"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -19,6 +21,7 @@
         android:id="@+id/flightcell_frag_flight_callsign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_flight" />
 
@@ -27,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/from"
+        android:textColor="@color/white"
         android:layout_marginStart="14dp"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_flight_callsign"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +39,7 @@
         android:id="@+id/flightcell_frag_departure_airport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_from"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -44,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:text="@string/to"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_departure_airport"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -51,6 +57,7 @@
         android:id="@+id/flightcell_frag_arrival_airport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_to"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -61,6 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/departure"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/flightcell_frag_flight"/>
 
@@ -68,6 +76,7 @@
         android:id="@+id/flightcell_frag_departure_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_departure"
         app:layout_constraintTop_toBottomOf="@id/flightcell_frag_flight" />
 
@@ -76,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/arrival"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/flightcell_frag_departure"/>
 
@@ -83,6 +93,7 @@
         android:id="@+id/flightcell_frag_arrival_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_arrival"
         app:layout_constraintTop_toBottomOf="@id/flightcell_frag_departure" />
 
@@ -91,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/duration"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/flightcell_frag_arrival"/>
 
@@ -98,6 +110,7 @@
         android:id="@+id/flightcell_frag_duration_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/flightcell_frag_duration"
         app:layout_constraintTop_toBottomOf="@id/flightcell_frag_arrival" />
 

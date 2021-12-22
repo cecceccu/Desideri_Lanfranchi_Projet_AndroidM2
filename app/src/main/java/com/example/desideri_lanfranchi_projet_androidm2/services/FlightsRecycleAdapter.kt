@@ -2,6 +2,7 @@ import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desideri_lanfranchi_projet_androidm2.R
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
 import com.example.desideri_lanfranchi_projet_androidm2.services.FlightCell
 
@@ -34,9 +35,9 @@ class FlightsRecyclerAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(selectedPos==position)
-            holder.itemView.setBackgroundColor(Color.parseColor("#c0c0c0"));
+            holder.itemView.setBackgroundColor(Color.parseColor("#534bae"));
         else
-            holder.itemView.setBackgroundColor(Color.parseColor("#e0e0e0"));
+            holder.itemView.setBackgroundColor(Color.parseColor("#1a237e"));
 
         val flightCell = holder.itemView as FlightCell
         flightCell.bindData(flightList[position])

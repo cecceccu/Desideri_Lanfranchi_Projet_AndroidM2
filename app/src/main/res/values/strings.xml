@@ -2,24 +2,24 @@
     <string name="app_name">Desideri_Lanfranchi_Projet_AndroidM2</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="from">"From : "</string>
-    <string name="to">"To : "</string>
-    <string name="flight">"Flight : "</string>
-    <string name="departure">"Departure : "</string>
-    <string name="arrival">"Arrival : "</string>
-    <string name="flightTime">"Flight time : "</string>
-    <string name="flightList">"Flights List : "</string>
+    <string name="from">From :\u0020</string>
+    <string name="to">To :\u0020</string>
+    <string name="flight">Flight :\u0020</string>
+    <string name="departure">Departure :\u0020</string>
+    <string name="arrival">Arrival :\u0020</string>
+    <string name="flightTime">Flight time :\u0020</string>
+    <string name="flightList">Flights List :\u0020</string>
     <string name="show_track">Show track</string>
     <string name="new_search">Back to search</string>
     <string name="back_to_list">Back to list</string>
     <string name="detail">Show detail</string>
     <string name="flight_history">History</string>
     <string name="show_less">Show less</string>
-    <string name="speed">"Speed : "</string>
-    <string name="altitude">"Altitude : "</string>
-    <string name="state">"State : "</string>
+    <string name="speed">Speed :\u0020</string>
+    <string name="altitude">Altitude :\u0020</string>
+    <string name="state">State :\u0020</string>
     <string name="back_to_details">Back to details</string>
     <string name="header">FlightApp</string>
     <string name="search">Search</string>
-    <string name="duration">"Flight duration : "</string>
+    <string name="duration">Flight duration :\u0020</string>
 </resources>
