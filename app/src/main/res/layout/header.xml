@@ -8,7 +8,7 @@
         android:id="@+id/flight_app_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="FlightApp"
+        android:text="@string/header"
         android:gravity="center"
         android:padding="20dp"
         android:textSize="20sp"

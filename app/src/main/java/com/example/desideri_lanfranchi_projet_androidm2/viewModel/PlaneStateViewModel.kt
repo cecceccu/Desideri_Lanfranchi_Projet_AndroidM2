@@ -40,7 +40,7 @@ class PlaneStateViewModel: ViewModel() {
 
         val icao24 = DataHolder.selectedFlight?.icao24
 
-        val begin = (System.currentTimeMillis()/1000 - 15*86400) as Long//Getting flights for the 15 last days
+        val begin = (System.currentTimeMillis()/1000 - 3*86400) as Long//Getting flights for the 3 last days
         val end = (System.currentTimeMillis()/1000) as Long
 
         url += "?icao24=${icao24}&begin=${begin}&end=${end}"

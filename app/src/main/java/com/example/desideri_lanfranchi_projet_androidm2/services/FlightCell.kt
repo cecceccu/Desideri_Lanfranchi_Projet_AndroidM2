@@ -18,6 +18,7 @@ class FlightCell : RelativeLayout {
     var toTextView: TextView? = null
     var fromDateTextView: TextView? = null
     var toDateTextView: TextView? = null
+    var durationTextView: TextView? = null
 
     constructor(context: Context?) : super(context) {
         initLayout()
@@ -42,6 +43,7 @@ class FlightCell : RelativeLayout {
         toTextView = findViewById(R.id.flightcell_frag_arrival_airport)
         fromDateTextView = findViewById(R.id.flightcell_frag_departure_date)
         toDateTextView = findViewById(R.id.flightcell_frag_arrival_date)
+        durationTextView = findViewById(R.id.flightcell_frag_duration_value)
     }
 
     //CACA: c'est pas bien de traiter de la donnée dans une vue
@@ -52,6 +54,7 @@ class FlightCell : RelativeLayout {
         toTextView?.text = flight.estArrivalAirport
         fromDateTextView?.text = epochToDateConverter(flight.firstSeen)
         toDateTextView?.text = epochToDateConverter(flight.lastSeen)
+        durationTextView?.text = getFormattedFlightDuration(flight.lastSeen - flight.firstSeen)
 
 
 
@@ -66,5 +69,16 @@ class FlightCell : RelativeLayout {
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm")
         val s:String = sdf.format(Date(epochTime*1000))
         return s
+    }
+
+    private fun getFormattedFlightDuration(t: Long): String{
+        var time = t
+        val seconds = time%60
+        time -= seconds
+        val minutes = time%3600/60
+        time -= minutes*60
+        val hours = time/3600
+
+        return "${hours}h ${minutes}m ${seconds}s"
     }
 }

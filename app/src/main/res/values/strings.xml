@@ -19,4 +19,7 @@
     <string name="altitude">"Altitude : "</string>
     <string name="state">"State : "</string>
     <string name="back_to_details">Back to details</string>
+    <string name="header">FlightApp</string>
+    <string name="search">Search</string>
+    <string name="duration">"Flight duration : "</string>
 </resources>
