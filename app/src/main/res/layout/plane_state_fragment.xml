@@ -9,7 +9,7 @@
         tools:context=".view.FlightListActivity"
         android:orientation="vertical"
         android:background="#e0e0e0"
-        android:weightSum="6">
+        android:weightSum="9">
 
 
 
@@ -19,7 +19,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="5"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <com.google.android.gms.maps.MapView
@@ -28,14 +28,17 @@
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/gray"
+            android:background="@color/gray"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:padding="20dp">
+        android:layout_weight="3"
+        android:padding="20dp"
+        android:background="@color/primary">
 
 
         <TextView
@@ -97,7 +100,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/primary_dark">
 
 
         <ProgressBar
@@ -122,6 +126,8 @@
             android:textSize="12sp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary_light"
+            android:textColor="@color/white"
             android:visibility="invisible"/>
 
         <Button
@@ -134,6 +140,8 @@
             android:textSize="12sp"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/primary_light"
+            android:textColor="@color/white"
             android:layout_marginBottom="16dp"/>
 
         <Button
@@ -147,6 +155,8 @@
             android:layout_marginLeft="14dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/primary_light"
+            android:textColor="@color/white"
             android:layout_marginBottom="16dp"/>
 
 

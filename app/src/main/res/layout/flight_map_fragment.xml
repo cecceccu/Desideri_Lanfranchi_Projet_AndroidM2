@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.FlightMapFragment"
-    android:background="#e0e0e0">
+    android:background="@color/primary_dark">
 
 
     <com.google.android.gms.maps.MapView
@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/back_to_list_button"
+        android:backgroundTint="@color/gray"
+        android:background="@color/gray"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ProgressBar
@@ -36,6 +38,8 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/primary_light"
+        android:textColor="@color/white"
         android:visibility="invisible"
         />
 
@@ -44,6 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/detail"
+        android:backgroundTint="@color/primary_light"
+        android:textColor="@color/white"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"

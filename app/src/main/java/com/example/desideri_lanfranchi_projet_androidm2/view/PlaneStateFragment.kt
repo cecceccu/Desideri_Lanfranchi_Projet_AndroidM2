@@ -77,7 +77,7 @@ class PlaneStateFragment: Fragment(), OnMapReadyCallback {
 
 
                 speed.text = if (selectedAirplaneState?.states?.get(0)?.get(9) != null) selectedAirplaneState?.states?.get(0)?.get(9).toString() + " m/s" else "Unknown"
-                altitude.text = if (selectedAirplaneState?.states?.get(0)?.get(7).toString()!=null) selectedAirplaneState?.states?.get(0)?.get(7).toString() + " m" else "Unknown"
+                altitude.text = if (selectedAirplaneState?.states?.get(0)?.get(7) !=null) selectedAirplaneState?.states?.get(0)?.get(7).toString() + " m" else "Unknown"
 
                 if (selectedAirplaneState?.states?.get(0)?.get(11) == null)
                 {
