@@ -9,8 +9,14 @@
     <string name="arrival">"Arrival : "</string>
     <string name="flightTime">"Flight time : "</string>
     <string name="flightList">"Flights List : "</string>
-    <string name="show">Show track</string>
+    <string name="show_track">Show track</string>
     <string name="new_search">Back to search</string>
     <string name="back_to_list">Back to list</string>
     <string name="detail">Show detail</string>
+    <string name="flight_history">History</string>
+    <string name="show_less">Show less</string>
+    <string name="speed">"Speed : "</string>
+    <string name="altitude">"Altitude : "</string>
+    <string name="state">"State : "</string>
+    <string name="back_to_details">Back to details</string>
 </resources>

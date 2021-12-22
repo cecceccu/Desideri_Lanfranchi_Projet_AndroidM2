@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.desideri_lanfranchi_projet_androidm2.model.DataHolder
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
+import com.example.desideri_lanfranchi_projet_androidm2.model.State
 import com.example.desideri_lanfranchi_projet_androidm2.model.Track
 import com.example.desideri_lanfranchi_projet_androidm2.services.RequestManager
 import com.example.desideri_lanfranchi_projet_androidm2.services.Utils
@@ -20,6 +21,8 @@ class FlightMapViewModel : ViewModel() {
 
     private val requestStatusLiveData = MutableLiveData<Int>()
 
+    private val airplaneStateLiveData = MutableLiveData<State>()
+
 
 
     fun getFlightTrackLiveData(): LiveData<Track>
@@ -29,6 +32,10 @@ class FlightMapViewModel : ViewModel() {
 
     fun getRequestStatusLiveData(): LiveData<Int> {
         return requestStatusLiveData
+    }
+
+    fun getStateLiveData(): LiveData<State>{
+        return airplaneStateLiveData
     }
 
 
@@ -66,6 +73,55 @@ class FlightMapViewModel : ViewModel() {
 
 
 
+
+
+
+    }
+
+    fun showDetails()
+    {
+        var selectedFlight = DataHolder.selectedFlight
+        var url = "https://opensky-network.org/api/states/all"
+        val icao24 = selectedFlight!!.icao24
+
+
+        url += "?icao24=${icao24}&time=0"
+
+        Log.i("URL", url)
+
+        viewModelScope.launch {
+            requestStatusLiveData.value = 2 // 2 means pending
+            withContext(Dispatchers.IO){
+                val result = RequestManager.getSuspended(url, HashMap())
+                if (result != null){
+                    Log.i("RESULT", result)
+                    val state = Utils.convertStateDataIntoObject(result)
+                    DataHolder.selectedAirplaneState = state
+                    airplaneStateLiveData.postValue(state)
+
+                    if (state.states==null)
+                    {
+                        requestStatusLiveData.postValue(492)
+                    }
+                    else
+                    {
+                        if (state.states[0].size<17)
+                        {
+                            requestStatusLiveData.postValue(492)
+                        }
+                        else
+                        {
+                            requestStatusLiveData.postValue(291)
+                        }
+
+                    }
+                }
+                else
+                {
+                    requestStatusLiveData.postValue(491)
+                }
+            }
+        }
     }
 
 }

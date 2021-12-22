@@ -13,15 +13,14 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
 import com.example.desideri_lanfranchi_projet_androidm2.R
 import com.example.desideri_lanfranchi_projet_androidm2.model.DataHolder
 import com.example.desideri_lanfranchi_projet_androidm2.viewModel.FlightMapViewModel
 import com.example.desideri_lanfranchi_projet_androidm2.viewModel.SharedFlightViewModel
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
@@ -35,6 +34,7 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
         fun newInstance() = FlightMapFragment()
     }
 
+    private var isTablet: Boolean = false
     private lateinit var mapView: MapView
     private lateinit var viewModel: FlightMapViewModel
     private lateinit var sharedViewModel: SharedFlightViewModel
@@ -62,7 +62,7 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
         super.onActivityCreated(savedInstanceState)
 
 
-        val isTablet:Boolean = activity?.findViewById<View>(R.id.fragment_map_container) != null
+        isTablet = activity?.findViewById<View>(R.id.fragment_map_container) != null
         Log.i("Tablette", "isTablet $isTablet")
 
         if (!isTablet)
@@ -72,7 +72,11 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
             back_button.setOnClickListener {
                 fragmentManager?.popBackStackImmediate()
             }
+
+
         }
+
+
 
         viewModel = ViewModelProvider(this).get(FlightMapViewModel::class.java)
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedFlightViewModel::class.java)
@@ -80,10 +84,62 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
             viewModel.updatePath()
         })
 
+        detail_button.setOnClickListener {
+            if (sharedViewModel.getSelectedFlightLiveData().value == null)
+            {
+                Toast.makeText(activity, "Choose a flight track before viewing plane details", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                viewModel.showDetails()
+            }
+
+        }
+
+        viewModel.getRequestStatusLiveData().observe(viewLifecycleOwner, {
+
+            if (it==2) //pending
+            {
+                progressBar.visibility = View.VISIBLE
+            }
+            else
+            {
+                progressBar.visibility = View.INVISIBLE
+            }
+            if(it==491)
+            {
+                Toast.makeText(activity, "An error has occcurred", Toast.LENGTH_SHORT).show()
+            }
+            else if(it==291)
+            {
+                if (!isTablet)
+                {
+                    activity?.supportFragmentManager?.commit {
+                        setReorderingAllowed(true)
+                        replace<PlaneStateFragment>(R.id.fragment_list_container)
+                        addToBackStack(null)
+                    }
+                }
+                else
+                {
+                    activity?.supportFragmentManager?.commit {
+                        setReorderingAllowed(true)
+                        replace<PlaneStateFragment>(R.id.fragment_map_container)
+                        addToBackStack(null)
+                    }
+                }
+            }
+            else if (it==492)
+            {
+                Toast.makeText(activity, "No state available for selected plane", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 
 
     override fun onMapReady(googleMap: GoogleMap) {
+
 
 
         viewModel.getRequestStatusLiveData().observe(viewLifecycleOwner, {
@@ -101,6 +157,7 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
             }
             else if(it==200)
             {
+
                 drawPath(googleMap)
             }
 
@@ -131,10 +188,16 @@ class FlightMapFragment : Fragment(), OnMapReadyCallback {
             polylineOptions.width(6f)
             polylineOptions.geodesic(false)
             googleMap.addPolyline(polylineOptions)
+
+            val coordinate = LatLng(viewModel.getFlightTrackLiveData().value!!.path[0][1] as Double, viewModel.getFlightTrackLiveData().value!!.path[0][2] as Double)
             googleMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(viewModel.getFlightTrackLiveData().value!!.path[0][1] as Double, viewModel.getFlightTrackLiveData().value!!.path[0][2] as Double))
+                    .position(coordinate)
             )
+
+            val yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 1.0f)
+            googleMap.animateCamera(yourLocation)
+
             googleMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(viewModel.getFlightTrackLiveData().value!!.path[viewModel.getFlightTrackLiveData().value!!.path.size - 1][1] as Double,

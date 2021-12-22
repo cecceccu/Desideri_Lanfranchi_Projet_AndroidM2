@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FlightListFragment"
-    android:padding="20dp"
-    android:clipToPadding="false"
-    android:background="#e0e0e0">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
 
 
     <TextView
-        android:id="@+id/flight_list_frag_flightList"
+        android:id="@+id/aircraft_flights_list_frag_flightList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/flightList"
@@ -33,14 +22,14 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flight_list_frag_flightList"
-        app:layout_constraintBottom_toTopOf="@id/flight_list_frag_show_button"/>
+        app:layout_constraintTop_toBottomOf="@id/aircraft_flights_list_frag_flightList"
+        app:layout_constraintBottom_toTopOf="@id/aircraft_fligths_frag_back_to_details_button"/>
 
     <Button
-        android:id="@+id/flight_list_frag_show_button"
+        android:id="@+id/aircraft_fligths_frag_back_to_details_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_track"
+        android:text="@string/back_to_details"
         android:layout_marginTop="10dp"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@id/recyclerView_container"
@@ -49,10 +38,10 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
-        android:id="@+id/flight_list_frag_back_button"
+        android:id="@+id/aircraft_fligths_frag_back_to_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_search"
+        android:text="@string/back_to_list"
         android:layout_marginTop="10dp"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@id/recyclerView_container"

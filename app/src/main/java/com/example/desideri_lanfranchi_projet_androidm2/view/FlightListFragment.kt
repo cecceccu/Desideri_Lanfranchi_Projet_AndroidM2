@@ -26,6 +26,8 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
         fun newInstance() = FlightListFragment()
     }
 
+    private var isTablet:Boolean = false
+
     private lateinit var viewModel: FlightListFragmentViewModel
     private lateinit var sharedViewModel: SharedFlightViewModel
     private lateinit var selectedFlight: FlightModel
@@ -47,6 +49,7 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        isTablet = activity?.findViewById<View>(R.id.fragment_map_container) != null
         viewModel = ViewModelProvider(this).get(FlightListFragmentViewModel::class.java)
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedFlightViewModel::class.java)
         viewModel.getFlightListLiveData().observe(viewLifecycleOwner, Observer {
@@ -68,6 +71,10 @@ class FlightListFragment : Fragment(), FlightsRecyclerAdapter.OnItemClickListene
             }
             else
             {
+                if (isTablet)
+                {
+                    fragmentManager?.popBackStackImmediate()
+                }
                 sharedViewModel.updateSelectedFlight(viewModel.getSelectedFlightLiveData().value!!)
             }
         }

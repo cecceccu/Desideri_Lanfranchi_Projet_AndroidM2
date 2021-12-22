@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.example.desideri_lanfranchi_projet_androidm2.model.Airport
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
+import com.example.desideri_lanfranchi_projet_androidm2.model.State
 import com.example.desideri_lanfranchi_projet_androidm2.model.Track
 import com.google.gson.Gson
 import com.google.gson.JsonArray
@@ -214,6 +215,14 @@ class Utils private constructor() {
             var jsonElement = parser.parse(data)
             val jsonObject = jsonElement.asJsonObject
             return Gson().fromJson(jsonObject, Track::class.java)
+
+        }
+
+        fun convertStateDataIntoObject(data: String): State {
+            val parser = JsonParser()
+            var jsonElement = parser.parse(data)
+            val jsonObject = jsonElement.asJsonObject
+            return Gson().fromJson(jsonObject, State::class.java)
 
         }
     }

@@ -16,6 +16,7 @@ import kotlinx.coroutines.withContext
 class SharedFlightViewModel : ViewModel() {
     private val selectedFlightLiveData = MutableLiveData<FlightModel>()
 
+
     fun getSelectedFlightLiveData(): LiveData<FlightModel> {
         return selectedFlightLiveData
     }
