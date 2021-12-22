@@ -1,4 +1,4 @@
-package com.example.desideri_lanfranchi_projet_androidm2.services
+package com.example.desideri_lanfranchi_projet_androidm2.view
 
 import android.content.Context
 import android.util.AttributeSet

@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desideri_lanfranchi_projet_androidm2.R
 import com.example.desideri_lanfranchi_projet_androidm2.model.FlightModel
-import com.example.desideri_lanfranchi_projet_androidm2.services.FlightCell
+import com.example.desideri_lanfranchi_projet_androidm2.view.FlightCell
 
 /**
  * Created by sergio on 11/10/21
